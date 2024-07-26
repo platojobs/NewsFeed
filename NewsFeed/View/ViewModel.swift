@@ -42,14 +42,14 @@ struct ViewModel: Identifiable {
         //2020-11-11T21:04:00Z
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        df.timeZone = TimeZone(abbreviation: "UTC")
+        df.timeZone = TimeZone(abbreviation: "CST")
         
         if let date = df.date(from: self.article.publishedAt) {
-            df.dateStyle = .medium
+            df.dateStyle = .full
             df.timeStyle = .short
             return df.string(from: date)
         } else {
-            return ""
+            return "--"
         }
     }
 }

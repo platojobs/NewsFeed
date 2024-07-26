@@ -35,15 +35,15 @@ struct NewsRow: View {
                 
                 HStack(alignment: .firstTextBaseline) {
                     
-                    Text(article.sourceName)
+                    Text(article.article.author ?? "--")
                         .foregroundColor(.secondary)
                         .lineLimit(1)
                     Spacer()
-                    if let publishedAt = article.publishedAt {
-                    Text(publishedAt)
+                    
+                    Text(article.publishedAt)
                         .foregroundColor(.secondary)
                         .lineLimit(1)
-                    }
+                    
                 }
                 .padding(.top)
             }

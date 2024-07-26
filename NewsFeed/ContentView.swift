@@ -23,13 +23,21 @@ struct ContentView : View {
             
             //this is aka "TableView"
             List(model.articles) { article in
+                
                 //if we come from widget link, lets open the selected news article
                 if linkActive {
                     
-                    NavigationLink(destination: NewsDetailed(article: model.articles[value]), isActive: $linkActive)
-                    {
+//                    NavigationLink(destination: NewsDetailed(article: model.articles[value]),isActive: $linkActive) {
+//                        NewsRow(article: article)
+//                    }
+                    NavigationLink(value: article.id) {
                         NewsRow(article: article)
+                    }.navigationDestination(isPresented: $linkActive) {
+                        NewsDetailed(article: model.articles[value])
                     }
+                    
+                    
+                    
                 // otherwise, open normal list of articles
                 } else {
                     
@@ -40,7 +48,7 @@ struct ContentView : View {
                 }
                                 
             }
-            .navigationTitle(Text("News for today"))
+            .navigationTitle(Text("今日要闻"))
             
             //once the link was tapped on widget, we get the value here
             .onOpenURL { url in
@@ -56,7 +64,7 @@ struct ContentView : View {
 }
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()//(model: ArticleListViewModel())
+         ContentView()//(model: ArticleListViewModel())
     }
 }
 

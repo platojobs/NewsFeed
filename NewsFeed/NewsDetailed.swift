@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NewsDetailed: View {
-    
+    @State private var showWebView = false
     var article: ViewModel
     var body: some View {
         NavigationView {
@@ -40,9 +40,19 @@ struct NewsDetailed: View {
                 .padding(.top)
                 
                 
-                if let URL = URL(string: article.urlWeb) {
-                    Link("Read more...", destination: URL)
-                        .padding(.top)
+                if let utl = URL(string: article.urlWeb) {
+                   // Link("Read more...", destination: URL)
+                       // .padding(.top)
+                    Button {
+                        showWebView.toggle()
+                        print(article.urlWeb)
+                    }label: {
+                        Text("阅读更多")
+                    }
+                    .padding(.top)
+                    .sheet(isPresented: $showWebView, content: {
+                        WebView(url: utl)
+                    })
                 }
                 Spacer()
             }

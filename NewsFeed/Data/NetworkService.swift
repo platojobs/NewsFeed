@@ -10,7 +10,7 @@ class NetworkService {
     
     static func loadData(completion: @escaping ([Article]?) -> ()) {
         
-        let urlString = "https://newsapi.org/v2/top-headlines?country=us&apiKey=d090b36e7ffd4f38ad37c0c93942a8d6"
+        let urlString = "https://newsapi.org/v2/top-headlines?country=cn&apiKey=XX"
         
         guard let url = URL(string: urlString) else { return }
         

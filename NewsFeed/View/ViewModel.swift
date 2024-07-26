@@ -46,7 +46,7 @@ struct ViewModel: Identifiable {
         
         if let date = df.date(from: self.article.publishedAt) {
             df.dateStyle = .full
-            df.timeStyle = .short
+            df.timeStyle = .none
             return df.string(from: date)
         } else {
             return "--"
